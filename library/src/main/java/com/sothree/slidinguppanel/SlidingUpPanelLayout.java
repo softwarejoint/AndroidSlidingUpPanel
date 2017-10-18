@@ -721,6 +721,7 @@ public class SlidingUpPanelLayout extends ViewGroup {
         mFirstLayout = true;
     }
 
+    @SuppressWarnings("Range")
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         final int widthMode = MeasureSpec.getMode(widthMeasureSpec);
@@ -920,19 +921,24 @@ public class SlidingUpPanelLayout extends ViewGroup {
 
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
+                // Check if this was a click on the faded part of the screen, and fire off the listener if there is one.
+                if (ady <= dragSlop
+                        && adx <= dragSlop
+                        && mSlideOffset > 0 && !isViewUnder(mSlideableView, (int) mInitialMotionX, (int) mInitialMotionY)) {
+
+                    if (mFadeOnClickListener != null) {
+                        playSoundEffect(android.view.SoundEffectConstants.CLICK);
+                        mFadeOnClickListener.onClick(this);
+                    }
+
+                    return true;
+                }
+
                 // If the dragView is still dragging when we get here, we need to call processTouchEvent
                 // so that the view is settled
                 // Added to make scrollable views work (tokudu)
                 if (mDragHelper.isDragging()) {
                     mDragHelper.processTouchEvent(ev);
-                    return true;
-                }
-                // Check if this was a click on the faded part of the screen, and fire off the listener if there is one.
-                if (ady <= dragSlop
-                        && adx <= dragSlop
-                        && mSlideOffset > 0 && !isViewUnder(mSlideableView, (int) mInitialMotionX, (int) mInitialMotionY) && mFadeOnClickListener != null) {
-                    playSoundEffect(android.view.SoundEffectConstants.CLICK);
-                    mFadeOnClickListener.onClick(this);
                     return true;
                 }
                 break;
@@ -959,7 +965,7 @@ public class SlidingUpPanelLayout extends ViewGroup {
         final int action = MotionEventCompat.getActionMasked(ev);
 
         if (!isEnabled() || !isTouchEnabled() || (mIsUnableToDrag && action != MotionEvent.ACTION_DOWN)) {
-            mDragHelper.abort();
+            //mDragHelper.abort();
             return super.dispatchTouchEvent(ev);
         }
 

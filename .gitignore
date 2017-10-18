@@ -1,4 +1,6 @@
 #Android generated
+.idea
+.idea/
 bin
 gen
 gen*
