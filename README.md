@@ -3,8 +3,8 @@ Android Sliding Up Panel
 
 ## Android Sliding Up Panel
 
-[![Release](https://jitpack.io/v/org.bitbucket.softwarejoint/androidslidinguppanel.svg)]
-(https://jitpack.io/#org.bitbucket.softwarejoint/androidslidinguppanel)
+[![Release](https://jitpack.io/v/softwarejoint/AndroidSlidingUpPanel.svg)]
+(https://jitpack.io/#softwarejoint/AndroidSlidingUpPanel)
 
 This library provides a simple way to add a draggable sliding up panel (popularized by Google Music and Google Maps) to your Android application.
 
@@ -27,7 +27,7 @@ https://github.com/umano/AndroidSlidingUpPanel
 
 ```
     dependencies {
-	    compile 'org.bitbucket.softwarejoint:androidslidinguppanel:1.0.0'
+	    compile 'com.github.softwarejoint:AndroidSlidingUpPanel:3.3.1'
 	}
 
 ```
