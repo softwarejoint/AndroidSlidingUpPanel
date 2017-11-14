@@ -26,7 +26,7 @@ https://github.com/umano/AndroidSlidingUpPanel
 
 ```
     dependencies {
-	    compile 'com.github.softwarejoint:AndroidSlidingUpPanel:3.3.1'
+	    compile 'com.github.softwarejoint:AndroidSlidingUpPanel:3.3.2'
 	}
 
 ```
