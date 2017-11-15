@@ -929,7 +929,7 @@ public class SlidingUpPanelLayout extends ViewGroup {
                         mFadeOnClickListener.onClick(this);
                     }
 
-                    return true;
+                    return false;
                 }
 
                 // If the dragView is still dragging when we get here, we need to call processTouchEvent
